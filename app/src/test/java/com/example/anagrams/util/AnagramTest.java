@@ -9,6 +9,11 @@ public class AnagramTest {
 
     @Test
     public void testAnagramIsWorks(){
-        Assert.assertEquals("ol1leH dlroW!", Anagram.anagram("He1llo World!"));
+        Assert.assertEquals("ol1leH dlroW!", Anagram.reverseOnlyLetters("He1llo World!"));
+    }
+
+    @Test
+    public void testAngagramWhenNull(){
+        Assert.assertEquals("Please, write a phrase!", Anagram.reverseOnlyLetters(null));
     }
 }
