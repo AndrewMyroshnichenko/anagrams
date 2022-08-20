@@ -90,11 +90,11 @@ public class Anagram {
         for (int j = 0; j < outputArray.length; j++) {
             if(lettersArray[j] != '\u0000') {
                 int counter = 0;
-                boolean wholeArrayIsSet = false;
-                while (!wholeArrayIsSet){
+                boolean charIsSet = false;
+                while (!charIsSet){
                     if (outputArray[outputArray.length - 1 - counter] == '\u0000'){
                         outputArray[outputArray.length - 1 - counter] = lettersArray[j];
-                        wholeArrayIsSet = true;
+                        charIsSet = true;
                     } else {
                         counter++;
                     }
@@ -135,11 +135,11 @@ public class Anagram {
         for (int j = 0; j < outputArray.length; j++) {
             if(nonXLLettersArray[j] != '\u0000') {
                 int counter = 0;
-                boolean wholeArrayIsSet = false;
-                while (!wholeArrayIsSet){
+                boolean charIsSet = false;
+                while (!charIsSet){
                     if (outputArray[outputArray.length - 1 - counter] == '\u0000'){
                         outputArray[outputArray.length - 1 - counter] = nonXLLettersArray[j];
-                        wholeArrayIsSet = true;
+                        charIsSet = true;
                     } else {
                         counter++;
                     }
