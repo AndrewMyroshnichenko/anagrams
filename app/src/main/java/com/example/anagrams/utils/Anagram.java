@@ -17,7 +17,7 @@ public class Anagram {
                 char [] outputWord = new char[inputWord.length];
                 Arrays.fill(outputWord, (char) '\u0000');
                 outputWord = fillNonLetters(inputWord);
-                outputWord = finalNonLettersReversFilling(tempArrayForLetters, outputWord);
+                outputWord = finalFillingOutputArray(tempArrayForLetters, outputWord);
                 inputStringToArray[i] = new String(outputWord);
             }
 
@@ -49,7 +49,7 @@ public class Anagram {
                 char [] outputWord = new char[inputWord.length];
                 Arrays.fill(outputWord, (char) '\u0000');
                 outputWord = fillWithSelectedLetters(inputWord, exceptXL);
-                outputWord = finalNonXLLettersReversFilling(tempArrayWithoutXL, outputWord);
+                outputWord = finalFillingOutputArray(tempArrayWithoutXL, outputWord);
                 inputStringToArray[i] = new String(outputWord);
             }
 
@@ -69,7 +69,7 @@ public class Anagram {
         if(inputString == null || exceptChars == null) {
             inputString = "You did not enter a phrase or exclusive characters, please complete both fields.";
         } else {
-
+            //TODO: Implement user's excluded letters
         }
         return inputString;
     }
@@ -98,27 +98,6 @@ public class Anagram {
         return lettersArray;
     }
 
-    private static char [] finalNonLettersReversFilling(char [] lettersArray, char [] outputArray){
-        for (int j = 0; j < outputArray.length; j++) {
-            if(lettersArray[j] != '\u0000') {
-                int counter = 0;
-                boolean charIsSet = false;
-                while (!charIsSet){
-                    if (outputArray[outputArray.length - 1 - counter] == '\u0000'){
-                        outputArray[outputArray.length - 1 - counter] = lettersArray[j];
-                        charIsSet = true;
-                    } else {
-                        counter++;
-                    }
-
-                }
-            }
-        }
-
-        return outputArray;
-
-    }
-
     private static char [] fillWithoutSelectedLetters(char [] inputArray, String exceptLetters){
         char [] withoutXLArray = new char[inputArray.length];
         for (int i = 0; i < inputArray.length; i++) {
@@ -143,7 +122,7 @@ public class Anagram {
         return outputArray;
     }
 
-    private static char [] finalNonXLLettersReversFilling(char [] nonXLLettersArray, char [] outputArray){
+    private static char [] finalFillingOutputArray(char [] nonXLLettersArray, char [] outputArray){
         for (int i = 0; i < outputArray.length; i++) {
             if(nonXLLettersArray[i] != '\u0000') {
                 int counter = 0;
