@@ -65,11 +65,29 @@ public class Anagram {
         return inputString;
     }
 
-    public static String reverseUserExceptChars(String inputString, String exceptChars){
+    public static String reverseExceptChars(String inputString, String exceptChars){
         if(inputString == null || exceptChars == null) {
             inputString = "You did not enter a phrase or exclusive characters, please complete both fields.";
         } else {
-            //TODO: Implement user's excluded letters
+            String [] inputStringToArray = inputString.split(" ");
+
+            for(int i = 0; i < inputStringToArray.length; i++){
+                char [] inputWord = inputStringToArray[i].toCharArray();
+                char [] tempArrayWithoutXL = fillWithoutSelectedLetters(inputWord, exceptChars);
+                char [] outputWord = new char[inputWord.length];
+                Arrays.fill(outputWord, (char) '\u0000');
+                outputWord = fillWithSelectedLetters(inputWord, exceptChars);
+                outputWord = finalFillingOutputArray(tempArrayWithoutXL, outputWord);
+                inputStringToArray[i] = new String(outputWord);
+            }
+
+            StringBuilder reversedString = new StringBuilder();
+            for (String s : inputStringToArray) {
+                reversedString.append(s).append(" ");
+            }
+
+            return  reversedString.toString().trim();
+
         }
         return inputString;
     }

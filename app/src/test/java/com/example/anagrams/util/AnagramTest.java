@@ -57,5 +57,15 @@ public class AnagramTest {
         Assert.assertEquals("a1bcd efglh", Anagram.reverseExceptXL("dcb1a hgfle"));
     }
 
+    @Test
+    public void testReverseExceptCharsIsWorks(){
+        Assert.assertEquals("Holl1e !dlroW", Anagram.reverseExceptChars("He1llo World!", "H"));
+    }
+
+    @Test
+    public void testReverseExceptCharsWhenNulls(){
+        Assert.assertEquals("You did not enter a phrase or exclusive characters, please complete both fields.", Anagram.reverseExceptChars(null, null));
+    }
+
 
 }
