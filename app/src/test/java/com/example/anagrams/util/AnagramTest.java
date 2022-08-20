@@ -56,4 +56,6 @@ public class AnagramTest {
     public void testReverseExceptXLFoxmindedInput3(){
         Assert.assertEquals("a1bcd efglh", Anagram.reverseExceptXL("dcb1a hgfle"));
     }
+
+
 }
