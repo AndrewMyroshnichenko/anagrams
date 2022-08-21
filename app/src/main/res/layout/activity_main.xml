@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:visibility="visible"
     tools:context=".MainActivity">
 
     <RadioGroup
@@ -11,8 +12,9 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="32dp"
+        android:checkedButton="@id/radioButton_reverse_only_letter"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
@@ -22,6 +24,7 @@
             android:id="@+id/radioButton_reverse_only_letter"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:selectAllOnFocus="false"
             android:text="Reverse only letters" />
 
         <RadioButton
@@ -31,18 +34,19 @@
             android:text="Reverse all except X, x, L, l" />
 
         <RadioButton
-            android:id="@+id/radioButton3_user_reverse"
+            android:id="@+id/radioButton_user_reverse"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="You may choose which characters non reverse" />
     </RadioGroup>
 
     <TextView
-        android:id="@+id/textView_prevenrion"
+        android:id="@+id/textView_prevention"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="64dp"
-        android:layout_marginEnd="64dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:gravity="center|center_vertical"
         android:text="Atantion! Input characters are case sensetive. If you need except small and big letters choose both."
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -52,21 +56,20 @@
         android:id="@+id/editText_characters"
         android:layout_width="0dp"
         android:layout_height="48dp"
-        android:layout_marginStart="64dp"
-        android:layout_marginEnd="64dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
         android:ems="10"
         android:hint="Input characters here"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_prevenrion" />
+        app:layout_constraintTop_toBottomOf="@+id/textView_prevention" />
 
     <EditText
         android:id="@+id/editText_input_phrase"
         android:layout_width="0dp"
         android:layout_height="48dp"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="128dp"
         android:layout_marginEnd="32dp"
         android:ems="10"
         android:gravity="start|top"
@@ -74,16 +77,15 @@
         android:inputType="textMultiLine"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rg_choose_reverse" />
+        app:layout_constraintTop_toBottomOf="@+id/editText_characters" />
 
     <TextView
         android:id="@+id/textView_result"
         android:layout_width="0dp"
         android:layout_height="48dp"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="64dp"
         android:layout_marginEnd="32dp"
-        android:text="TextView"
+        android:gravity="center_horizontal|top"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editText_input_phrase" />
