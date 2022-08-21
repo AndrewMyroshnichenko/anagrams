@@ -6,32 +6,33 @@ public class Anagram {
 
     public static String reverseOnlyLetters(String inputString){
 
+        String allLetters = "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM";
+        String ifInputNull;
+
         if(inputString == null) {
-            inputString = "Please, write a phrase!";
+            ifInputNull = "Please, write a phrase!";
         } else {
-            String [] inputStringToArray = inputString.split(" ");
+            String [] splitPhrase = inputString.split(" ");
 
-            String allLetters = "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM";
-
-            for(int i = 0; i < inputStringToArray.length; i++){
-                char [] inputWord = inputStringToArray[i].toCharArray();
+            for(int i = 0; i < splitPhrase.length; i++){
+                char [] inputWord = splitPhrase[i].toCharArray();
                 char [] tempArrayForLetters = fillWithSelectedLetters(inputWord, allLetters);
                 char [] outputWord = new char[inputWord.length];
                 Arrays.fill(outputWord, (char) '\u0000');
                 outputWord = fillWithoutSelectedLetters(inputWord, allLetters);
                 outputWord = finalFillingOutputArray(tempArrayForLetters, outputWord);
-                inputStringToArray[i] = new String(outputWord);
+                splitPhrase[i] = new String(outputWord);
             }
 
             StringBuilder reversedString = new StringBuilder();
-            for (String s : inputStringToArray) {
+            for (String s : splitPhrase) {
                 reversedString.append(s).append(" ");
             }
 
             return  reversedString.toString().trim();
 
         }
-        return inputString;
+        return ifInputNull;
 
 
     }
@@ -39,9 +40,10 @@ public class Anagram {
     public static String reverseExceptXL(String inputString){
 
         String exceptXL = "XxLl";
+        String ifInputNull;
 
         if(inputString == null) {
-            inputString = "Please, write a phrase!";
+            ifInputNull = "Please, write a phrase!";
         } else {
             String [] inputStringToArray = inputString.split(" ");
 
@@ -64,12 +66,15 @@ public class Anagram {
 
         }
 
-        return inputString;
+        return ifInputNull;
     }
 
     public static String reverseExceptChars(String inputString, String exceptChars){
+
+        String ifInputNull;
+
         if(inputString == null || exceptChars == null) {
-            inputString = "You did not enter a phrase or exclusive characters, please complete both fields.";
+            ifInputNull = "You did not enter a phrase or exclusive characters, please complete both fields.";
         } else {
             String [] inputStringToArray = inputString.split(" ");
 
@@ -91,7 +96,7 @@ public class Anagram {
             return  reversedString.toString().trim();
 
         }
-        return inputString;
+        return ifInputNull;
     }
 
     private static char [] fillWithoutSelectedLetters(char [] inputArray, String exceptLetters){
