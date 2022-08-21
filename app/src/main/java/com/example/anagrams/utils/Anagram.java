@@ -11,12 +11,14 @@ public class Anagram {
         } else {
             String [] inputStringToArray = inputString.split(" ");
 
+            String allLetters = "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM";
+
             for(int i = 0; i < inputStringToArray.length; i++){
                 char [] inputWord = inputStringToArray[i].toCharArray();
-                char [] tempArrayForLetters = fillWithLetters(inputWord);
+                char [] tempArrayForLetters = fillWithSelectedLetters(inputWord, allLetters);
                 char [] outputWord = new char[inputWord.length];
                 Arrays.fill(outputWord, (char) '\u0000');
-                outputWord = fillNonLetters(inputWord);
+                outputWord = fillWithoutSelectedLetters(inputWord, allLetters);
                 outputWord = finalFillingOutputArray(tempArrayForLetters, outputWord);
                 inputStringToArray[i] = new String(outputWord);
             }
@@ -92,40 +94,16 @@ public class Anagram {
         return inputString;
     }
 
-    private static char [] fillNonLetters(char [] inputArray){
-        char [] outputArray = new char[inputArray.length];
-        for (int j = 0; j < inputArray.length; j++){
-            if(!Character.isLetter(inputArray[j])){
-                outputArray[j] = inputArray[j];
-            } else {
-                outputArray[j] = '\u0000';
-            }
-        }
-        return outputArray;
-    }
-
-    private static char [] fillWithLetters(char [] inputArray){
-        char [] lettersArray = new char[inputArray.length];
-        for (int j = 0; j < inputArray.length; j++) {
-            if(Character.isLetter(inputArray[j])){
-                lettersArray[j] = inputArray[j];
-            } else {
-                lettersArray[j] = '\u0000';
-            }
-        }
-        return lettersArray;
-    }
-
     private static char [] fillWithoutSelectedLetters(char [] inputArray, String exceptLetters){
-        char [] withoutXLArray = new char[inputArray.length];
+        char [] withoutSelectedLettersArray = new char[inputArray.length];
         for (int i = 0; i < inputArray.length; i++) {
             if(isCharContains(exceptLetters, inputArray[i])){
-                withoutXLArray[i] = '\u0000';
+                withoutSelectedLettersArray[i] = '\u0000';
             } else {
-                withoutXLArray[i] = inputArray[i];
+                withoutSelectedLettersArray[i] = inputArray[i];
             }
         }
-        return withoutXLArray;
+        return withoutSelectedLettersArray;
     }
 
     private static char [] fillWithSelectedLetters(char [] inputArray, String exceptLetters){

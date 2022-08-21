@@ -92,11 +92,28 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
                 switch (i){
+                    case R.id.radioButton_reverse_only_letter:
+                        tvResult.setText(Anagram.reverseOnlyLetters(""));
+                        editInputPhrase.setText("");
+                        usersExceptCharacters.setText("");
+                        tvPrevention.setVisibility(View.GONE);
+                        usersExceptCharacters.setVisibility(View.GONE);
+                        break;
+                    case R.id.radioButton_reverse_except_xl:
+                        tvResult.setText(Anagram.reverseExceptXL(""));
+                        editInputPhrase.setText("");
+                        usersExceptCharacters.setText("");
+                        tvPrevention.setVisibility(View.GONE);
+                        usersExceptCharacters.setVisibility(View.GONE);
+                        break;
                     case R.id.radioButton_user_reverse:
                         tvPrevention.setVisibility(View.VISIBLE);
+                        editInputPhrase.setText("");
                         usersExceptCharacters.setVisibility(View.VISIBLE);
                         break;
                     default:
+                        editInputPhrase.setText("");
+                        usersExceptCharacters.setText("");
                         tvPrevention.setVisibility(View.GONE);
                         usersExceptCharacters.setVisibility(View.GONE);
                 }

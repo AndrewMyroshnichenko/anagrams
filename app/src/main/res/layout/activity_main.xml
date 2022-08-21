@@ -37,7 +37,7 @@
             android:id="@+id/radioButton_user_reverse"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="You may choose which characters non reverse" />
+            android:text=" You can choose characters which don't reverse" />
     </RadioGroup>
 
     <TextView
@@ -47,7 +47,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
         android:gravity="center|center_vertical"
-        android:text="Atantion! Input characters are case sensetive. If you need except small and big letters choose both."
+        android:text="Attention! Input characters are case sensetive. Write both if you need to exclude small and capital letters "
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/rg_choose_reverse" />
