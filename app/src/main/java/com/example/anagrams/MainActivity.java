@@ -15,10 +15,10 @@ import com.example.anagrams.utils.Anagram;
 
 public class MainActivity extends AppCompatActivity {
 
-    private RadioGroup radioGroup;
-    private RadioButton radioReverseOnlyLetter, radioReverseExceptXL, radioUserReverse;
-    private EditText editInputPhrase, usersExceptCharacters;
-    private TextView tvPrevention, tvResult;
+
+    private EditText editInputPhrase;
+    private EditText usersExceptCharacters;
+    private TextView tvResult;
     private TextWatcher textWatcher;
 
     @Override
@@ -26,7 +26,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         init();
-        OnCreatePreferences();
     }
 
     @Override
@@ -51,19 +50,11 @@ public class MainActivity extends AppCompatActivity {
                 String inputPhrase = editInputPhrase.getText().toString().trim();
                 String  exceptCharacters = usersExceptCharacters.getText().toString().trim();
 
-                switch (radioGroup.getCheckedRadioButtonId()){
-                    case R.id.radioButton_reverse_only_letter:
-                        tvResult.setText(Anagram.reverseOnlyLetters(inputPhrase));
-                        break;
-                    case R.id.radioButton_reverse_except_xl:
-                        tvResult.setText(Anagram.reverseExceptXL(inputPhrase));
-                        break;
-                    case R.id.radioButton_user_reverse:
-                        tvResult.setText(Anagram.reverseExceptChars(inputPhrase, exceptCharacters));
-                        break;
-
+                if(exceptCharacters == ""){
+                    tvResult.setText(Anagram.reverseOnlyLetters(inputPhrase));
+                } else {
+                    tvResult.setText(Anagram.reverseExceptChars(inputPhrase, exceptCharacters));
                 }
-
             }
         };
 
@@ -79,51 +70,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void init(){
-        radioGroup = findViewById(R.id.rg_choose_reverse);
-        radioReverseOnlyLetter = findViewById(R.id.radioButton_reverse_only_letter);
-        radioReverseExceptXL = findViewById(R.id.radioButton_reverse_except_xl);
-        radioUserReverse = findViewById(R.id.radioButton_user_reverse);
         usersExceptCharacters = findViewById(R.id.editText_characters);
         editInputPhrase = findViewById(R.id.editText_input_phrase);
-        tvPrevention = findViewById(R.id.textView_prevention);
         tvResult = findViewById(R.id.textView_result);
-
-        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup radioGroup, int i) {
-                switch (i){
-                    case R.id.radioButton_reverse_only_letter:
-                        tvResult.setText(Anagram.reverseOnlyLetters(""));
-                        editInputPhrase.setText("");
-                        usersExceptCharacters.setText("");
-                        tvPrevention.setVisibility(View.GONE);
-                        usersExceptCharacters.setVisibility(View.GONE);
-                        break;
-                    case R.id.radioButton_reverse_except_xl:
-                        tvResult.setText(Anagram.reverseExceptXL(""));
-                        editInputPhrase.setText("");
-                        usersExceptCharacters.setText("");
-                        tvPrevention.setVisibility(View.GONE);
-                        usersExceptCharacters.setVisibility(View.GONE);
-                        break;
-                    case R.id.radioButton_user_reverse:
-                        tvPrevention.setVisibility(View.VISIBLE);
-                        editInputPhrase.setText("");
-                        usersExceptCharacters.setVisibility(View.VISIBLE);
-                        break;
-                    default:
-                        editInputPhrase.setText("");
-                        usersExceptCharacters.setText("");
-                        tvPrevention.setVisibility(View.GONE);
-                        usersExceptCharacters.setVisibility(View.GONE);
-                }
-            }
-        });
-
-    }
-
-    private void OnCreatePreferences(){
-        tvPrevention.setVisibility(View.GONE);
-        usersExceptCharacters.setVisibility(View.GONE);
     }
 }

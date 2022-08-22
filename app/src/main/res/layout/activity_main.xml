@@ -7,63 +7,19 @@
     android:visibility="visible"
     tools:context=".MainActivity">
 
-    <RadioGroup
-        android:id="@+id/rg_choose_reverse"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="32dp"
-        android:checkedButton="@id/radioButton_reverse_only_letter"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <RadioButton
-            android:id="@+id/radioButton_reverse_only_letter"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:selectAllOnFocus="false"
-            android:text="Reverse only letters" />
-
-        <RadioButton
-            android:id="@+id/radioButton_reverse_except_xl"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Reverse all except X, x, L, l" />
-
-        <RadioButton
-            android:id="@+id/radioButton_user_reverse"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text=" You can choose characters which don't reverse" />
-    </RadioGroup>
-
-    <TextView
-        android:id="@+id/textView_prevention"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
-        android:gravity="center|center_vertical"
-        android:text="Attention! Input characters are case sensetive. Write both if you need to exclude small and capital letters "
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rg_choose_reverse" />
-
     <EditText
         android:id="@+id/editText_characters"
         android:layout_width="0dp"
         android:layout_height="48dp"
         android:layout_marginStart="32dp"
+        android:layout_marginTop="64dp"
         android:layout_marginEnd="32dp"
         android:ems="10"
         android:hint="Input characters here"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_prevention" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/editText_input_phrase"

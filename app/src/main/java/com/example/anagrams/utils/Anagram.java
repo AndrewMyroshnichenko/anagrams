@@ -37,38 +37,6 @@ public class Anagram {
 
     }
 
-    public static String reverseExceptXL(String inputString){
-
-        String exceptXL = "XxLl";
-        String ifInputNull;
-
-        if(inputString == null) {
-            ifInputNull = "Please, write a phrase!";
-        } else {
-            String [] inputStringToArray = inputString.split(" ");
-
-            for(int i = 0; i < inputStringToArray.length; i++){
-                char [] inputWord = inputStringToArray[i].toCharArray();
-                char [] tempArrayWithoutXL = fillWithoutSelectedLetters(inputWord, exceptXL);
-                char [] outputWord = new char[inputWord.length];
-                Arrays.fill(outputWord, (char) '\u0000');
-                outputWord = fillWithSelectedLetters(inputWord, exceptXL);
-                outputWord = finalFillingOutputArray(tempArrayWithoutXL, outputWord);
-                inputStringToArray[i] = new String(outputWord);
-            }
-
-            StringBuilder reversedString = new StringBuilder();
-            for (String s : inputStringToArray) {
-                reversedString.append(s).append(" ");
-            }
-
-            return  reversedString.toString().trim();
-
-        }
-
-        return ifInputNull;
-    }
-
     public static String reverseExceptChars(String inputString, String exceptChars){
 
         String ifInputNull;
