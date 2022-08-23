@@ -4,7 +4,15 @@ import java.util.Arrays;
 
 public class Anagram {
 
-    public static String reverseOnlyLetters(String inputString){
+    public static String reverse(String input, String filter){
+        if(filter.equals("")){
+            return reverseOnlyLetters(input);
+        }
+        return reverseExceptChars(input, filter);
+
+    }
+
+    private static String reverseOnlyLetters(String inputString){
 
         String allLetters = "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM";
         String ifInputNull;
@@ -37,13 +45,9 @@ public class Anagram {
 
     }
 
-    public static String reverseExceptChars(String inputString, String exceptChars){
+    private static String reverseExceptChars(String inputString, String exceptChars){
 
-        String ifInputNull;
 
-        if(inputString == null || exceptChars == null) {
-            ifInputNull = "You did not enter a phrase or exclusive characters, please complete both fields.";
-        } else {
             String [] inputStringToArray = inputString.split(" ");
 
             for(int i = 0; i < inputStringToArray.length; i++){
@@ -63,8 +67,6 @@ public class Anagram {
 
             return  reversedString.toString().trim();
 
-        }
-        return ifInputNull;
     }
 
     private static char [] fillWithoutSelectedLetters(char [] inputArray, String exceptLetters){

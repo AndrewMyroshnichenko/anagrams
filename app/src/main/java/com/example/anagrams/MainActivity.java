@@ -19,7 +19,6 @@ public class MainActivity extends AppCompatActivity {
     private EditText editInputPhrase;
     private EditText usersExceptCharacters;
     private TextView tvResult;
-    private TextWatcher textWatcher;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,11 +27,11 @@ public class MainActivity extends AppCompatActivity {
         init();
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-
-        textWatcher = new TextWatcher() {
+    private void init(){
+        usersExceptCharacters = findViewById(R.id.editText_characters);
+        editInputPhrase = findViewById(R.id.editText_input_phrase);
+        tvResult = findViewById(R.id.textView_result);
+        TextWatcher textWatcher = new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
@@ -48,30 +47,12 @@ public class MainActivity extends AppCompatActivity {
             public void afterTextChanged(Editable editable) {
 
                 String inputPhrase = editInputPhrase.getText().toString().trim();
-                String  exceptCharacters = usersExceptCharacters.getText().toString().trim();
+                String exceptCharacters = usersExceptCharacters.getText().toString().trim();
+                tvResult.setText(Anagram.reverse(inputPhrase, exceptCharacters));
 
-                if(exceptCharacters == ""){
-                    tvResult.setText(Anagram.reverseOnlyLetters(inputPhrase));
-                } else {
-                    tvResult.setText(Anagram.reverseExceptChars(inputPhrase, exceptCharacters));
-                }
             }
         };
 
         editInputPhrase.addTextChangedListener(textWatcher);
-
-
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        textWatcher = null;
-    }
-
-    private void init(){
-        usersExceptCharacters = findViewById(R.id.editText_characters);
-        editInputPhrase = findViewById(R.id.editText_input_phrase);
-        tvResult = findViewById(R.id.textView_result);
     }
 }
