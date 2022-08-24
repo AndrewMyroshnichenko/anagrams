@@ -1,21 +1,8 @@
 package com.example.anagrams;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.view.View;
-import android.widget.EditText;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
-import android.widget.TextView;
-
-import com.example.anagrams.utils.Anagram;
-
 public class MainActivity extends AppCompatActivity {
 
-
+    private String s;
     private EditText editInputPhrase;
     private EditText usersExceptCharacters;
     private TextView tvResult;
