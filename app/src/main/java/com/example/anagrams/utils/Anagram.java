@@ -15,11 +15,7 @@ public class Anagram {
     private static String reverseOnlyLetters(String inputString){
 
         String allLetters = "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM";
-        String ifInputNull;
 
-        if(inputString == null) {
-            ifInputNull = "Please, write a phrase!";
-        } else {
             String [] splitPhrase = inputString.split(" ");
 
             for(int i = 0; i < splitPhrase.length; i++){
@@ -40,10 +36,10 @@ public class Anagram {
             return  reversedString.toString().trim();
 
         }
-        return ifInputNull;
 
 
-    }
+
+
 
     private static String reverseExceptChars(String inputString, String exceptChars){
 
@@ -72,7 +68,7 @@ public class Anagram {
     private static char [] fillWithoutSelectedLetters(char [] inputArray, String exceptLetters){
         char [] withoutSelectedLettersArray = new char[inputArray.length];
         for (int i = 0; i < inputArray.length; i++) {
-            if(isCharContains(exceptLetters, inputArray[i])){
+            if(exceptLetters.contains(String.valueOf(inputArray[i]))){
                 withoutSelectedLettersArray[i] = '\u0000';
             } else {
                 withoutSelectedLettersArray[i] = inputArray[i];
@@ -84,7 +80,7 @@ public class Anagram {
     private static char [] fillWithSelectedLetters(char [] inputArray, String exceptLetters){
         char [] outputArray = new char[inputArray.length];
         for (int i = 0; i < inputArray.length; i++){
-            if(isCharContains(exceptLetters, inputArray[i])){
+            if(exceptLetters.contains(String.valueOf(inputArray[i]))){
                 outputArray[i] = inputArray[i];
             } else {
                 outputArray[i] = '\u0000';
@@ -113,15 +109,6 @@ public class Anagram {
         return outputArray;
     }
 
-    private static boolean isCharContains(String excludedLetters, char comparableChar){
-        char [] inputString = excludedLetters.toCharArray();
-        for (char tmp : inputString) {
-            if (comparableChar == tmp) {
-                return true;
-            }
-        }
-        return false;
-    }
 }
 
 
