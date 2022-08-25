@@ -1,8 +1,18 @@
 package com.example.anagrams;
 
+import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.EditText;
+import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.anagrams.utils.Anagram;
+
 public class MainActivity extends AppCompatActivity {
 
-    private String s;
+
     private EditText editInputPhrase;
     private EditText usersExceptCharacters;
     private TextView tvResult;
@@ -11,10 +21,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        init();
-    }
-
-    private void init(){
         usersExceptCharacters = findViewById(R.id.editText_characters);
         editInputPhrase = findViewById(R.id.editText_input_phrase);
         tvResult = findViewById(R.id.textView_result);
@@ -42,4 +48,5 @@ public class MainActivity extends AppCompatActivity {
 
         editInputPhrase.addTextChangedListener(textWatcher);
     }
+
 }
