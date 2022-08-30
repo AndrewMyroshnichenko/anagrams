@@ -16,30 +16,26 @@ public class Anagram {
 
         String allLetters = "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM";
 
-            String [] splitPhrase = inputString.split(" ");
+            String [] inputStringToArray = inputString.split(" ");
 
-            for(int i = 0; i < splitPhrase.length; i++){
-                char [] inputWord = splitPhrase[i].toCharArray();
+            for(int i = 0; i < inputStringToArray.length; i++){
+                char [] inputWord = inputStringToArray[i].toCharArray();
                 char [] tempArrayForLetters = fillWithSelectedLetters(inputWord, allLetters);
                 char [] outputWord = new char[inputWord.length];
                 Arrays.fill(outputWord, (char) '\u0000');
                 outputWord = fillWithoutSelectedLetters(inputWord, allLetters);
                 outputWord = finalFillingOutputArray(tempArrayForLetters, outputWord);
-                splitPhrase[i] = new String(outputWord);
+                inputStringToArray[i] = new String(outputWord);
             }
 
             StringBuilder reversedString = new StringBuilder();
-            for (String s : splitPhrase) {
+            for (String s : inputStringToArray) {
                 reversedString.append(s).append(" ");
             }
 
             return  reversedString.toString().trim();
 
         }
-
-
-
-
 
     private static String reverseExceptChars(String inputString, String exceptChars){
 
@@ -48,11 +44,11 @@ public class Anagram {
 
             for(int i = 0; i < inputStringToArray.length; i++){
                 char [] inputWord = inputStringToArray[i].toCharArray();
-                char [] tempArrayWithoutXL = fillWithoutSelectedLetters(inputWord, exceptChars);
+                char [] arrayWithoutUsersLetters = fillWithoutSelectedLetters(inputWord, exceptChars);
                 char [] outputWord = new char[inputWord.length];
                 Arrays.fill(outputWord, (char) '\u0000');
                 outputWord = fillWithSelectedLetters(inputWord, exceptChars);
-                outputWord = finalFillingOutputArray(tempArrayWithoutXL, outputWord);
+                outputWord = finalFillingOutputArray(arrayWithoutUsersLetters, outputWord);
                 inputStringToArray[i] = new String(outputWord);
             }
 
@@ -68,7 +64,7 @@ public class Anagram {
     private static char [] fillWithoutSelectedLetters(char [] inputArray, String exceptLetters){
         char [] withoutSelectedLettersArray = new char[inputArray.length];
         for (int i = 0; i < inputArray.length; i++) {
-            if(exceptLetters.lastIndexOf(inputArray[i]) != -1){
+            if(exceptLetters.indexOf(inputArray[i]) != -1){
                 withoutSelectedLettersArray[i] = '\u0000';
             } else {
                 withoutSelectedLettersArray[i] = inputArray[i];
@@ -80,7 +76,7 @@ public class Anagram {
     private static char [] fillWithSelectedLetters(char [] inputArray, String exceptLetters){
         char [] outputArray = new char[inputArray.length];
         for (int i = 0; i < inputArray.length; i++){
-            if(exceptLetters.lastIndexOf(inputArray[i]) != -1){
+            if(exceptLetters.indexOf(inputArray[i]) != -1){
                 outputArray[i] = inputArray[i];
             } else {
                 outputArray[i] = '\u0000';
@@ -89,14 +85,14 @@ public class Anagram {
         return outputArray;
     }
 
-    private static char [] finalFillingOutputArray(char [] nonXLLettersArray, char [] outputArray){
+    private static char [] finalFillingOutputArray(char [] nonUsersLettersArray, char [] outputArray){
         for (int i = 0; i < outputArray.length; i++) {
-            if(nonXLLettersArray[i] != '\u0000') {
+            if(nonUsersLettersArray[i] != '\u0000') {
                 int counter = 0;
                 boolean charIsSet = false;
                 while (!charIsSet){
                     if (outputArray[outputArray.length - 1 - counter] == '\u0000'){
-                        outputArray[outputArray.length - 1 - counter] = nonXLLettersArray[i];
+                        outputArray[outputArray.length - 1 - counter] = nonUsersLettersArray[i];
                         charIsSet = true;
                     } else {
                         counter++;
@@ -108,6 +104,7 @@ public class Anagram {
 
         return outputArray;
     }
+
 
 }
 
