@@ -19,8 +19,6 @@ public class Anagram {
 
     }
 
-
-
     private static char [] fillWithoutSelectedLetters(char [] inputArray, String exceptLetters){
         char [] withoutSelectedLettersArray = new char[inputArray.length];
 
