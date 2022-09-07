@@ -4,88 +4,73 @@ import java.util.Arrays;
 
 public class Anagram {
 
-    public static String reverse(String input, String filter){
-        if(filter.equals("")){
-            return reverseOnlyLetters(input);
-        }
-        return reverseExceptChars(input, filter);
+    public static String reverse(String inputString, String exceptChars){
 
-    }
 
-    private static String reverseOnlyLetters(String inputString){
-
-        String allLetters = "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM";
-
-            String [] inputStringToArray = inputString.split(" ");
-
-            for(int i = 0; i < inputStringToArray.length; i++){
-                char [] inputWord = inputStringToArray[i].toCharArray();
-                char [] tempArrayForLetters = fillWithSelectedLetters(inputWord, allLetters);
-                char [] outputWord = new char[inputWord.length];
-                Arrays.fill(outputWord, (char) '\u0000');
-                outputWord = fillWithoutSelectedLetters(inputWord, allLetters);
-                outputWord = finalFillingOutputArray(tempArrayForLetters, outputWord);
-                inputStringToArray[i] = new String(outputWord);
-            }
+            String [] tempArray = inputString.split(" ");
+            buildReversedArray(tempArray, exceptChars);
 
             StringBuilder reversedString = new StringBuilder();
-            for (String s : inputStringToArray) {
-                reversedString.append(s).append(" ");
-            }
-
-            return  reversedString.toString().trim();
-
-        }
-
-    private static String reverseExceptChars(String inputString, String exceptChars){
-
-
-            String [] inputStringToArray = inputString.split(" ");
-
-            for(int i = 0; i < inputStringToArray.length; i++){
-                char [] inputWord = inputStringToArray[i].toCharArray();
-                char [] arrayWithoutUsersLetters = fillWithoutSelectedLetters(inputWord, exceptChars);
-                char [] outputWord = new char[inputWord.length];
-                Arrays.fill(outputWord, (char) '\u0000');
-                outputWord = fillWithSelectedLetters(inputWord, exceptChars);
-                outputWord = finalFillingOutputArray(arrayWithoutUsersLetters, outputWord);
-                inputStringToArray[i] = new String(outputWord);
-            }
-
-            StringBuilder reversedString = new StringBuilder();
-            for (String s : inputStringToArray) {
+            for (String s : tempArray) {
                 reversedString.append(s).append(" ");
             }
 
             return  reversedString.toString().trim();
 
     }
+
+
 
     private static char [] fillWithoutSelectedLetters(char [] inputArray, String exceptLetters){
         char [] withoutSelectedLettersArray = new char[inputArray.length];
-        for (int i = 0; i < inputArray.length; i++) {
-            if(exceptLetters.indexOf(inputArray[i]) != -1){
-                withoutSelectedLettersArray[i] = '\u0000';
-            } else {
-                withoutSelectedLettersArray[i] = inputArray[i];
+
+        if(exceptLetters != "") {
+            for (int i = 0; i < inputArray.length; i++) {
+                if(exceptLetters.indexOf(inputArray[i]) != -1){
+                    withoutSelectedLettersArray[i] = '\u0000';
+                } else {
+                    withoutSelectedLettersArray[i] = inputArray[i];
+                }
+            }
+        } else {
+            for (int i = 0; i < inputArray.length; i++) {
+                if (!Character.isLetter(inputArray[i])) {
+                    withoutSelectedLettersArray[i] = '\u0000';
+                } else {
+                    withoutSelectedLettersArray[i] = inputArray[i];
+                }
             }
         }
+
         return withoutSelectedLettersArray;
     }
 
     private static char [] fillWithSelectedLetters(char [] inputArray, String exceptLetters){
         char [] outputArray = new char[inputArray.length];
-        for (int i = 0; i < inputArray.length; i++){
-            if(exceptLetters.indexOf(inputArray[i]) != -1){
-                outputArray[i] = inputArray[i];
-            } else {
-                outputArray[i] = '\u0000';
+
+        if(exceptLetters != "") {
+            for (int i = 0; i < inputArray.length; i++){
+                if(exceptLetters.indexOf(inputArray[i]) != -1){
+                    outputArray[i] = inputArray[i];
+                } else {
+                    outputArray[i] = '\u0000';
+                }
+            }
+        } else {
+            for (int i = 0; i < inputArray.length; i++) {
+                if (!Character.isLetter(inputArray[i])) {
+                    outputArray[i] = inputArray[i];
+                } else {
+                    outputArray[i] = '\u0000';
+                }
             }
         }
+
+
         return outputArray;
     }
 
-    private static char [] finalFillingOutputArray(char [] nonUsersLettersArray, char [] outputArray){
+    private static void finalFillingOutputArray(char [] nonUsersLettersArray, char [] outputArray){
         for (int i = 0; i < outputArray.length; i++) {
             if(nonUsersLettersArray[i] != '\u0000') {
                 int counter = 0;
@@ -102,7 +87,19 @@ public class Anagram {
             }
         }
 
-        return outputArray;
+    }
+
+    private static void buildReversedArray(String [] stringToStringsArray, String exceptChars){
+
+        for(int i = 0; i < stringToStringsArray.length; i++){
+            char [] inputWord = stringToStringsArray[i].toCharArray();
+            char [] arrayWithoutUsersLetters = fillWithoutSelectedLetters(inputWord, exceptChars);
+            char [] outputWord = new char[inputWord.length];
+            Arrays.fill(outputWord, (char) '\u0000');
+            outputWord = fillWithSelectedLetters(inputWord, exceptChars);
+            finalFillingOutputArray(arrayWithoutUsersLetters, outputWord);
+            stringToStringsArray[i] = new String(outputWord);
+        }
     }
 
 
