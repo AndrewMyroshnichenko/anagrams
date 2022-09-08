@@ -21,8 +21,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        usersExceptCharacters = findViewById(R.id.editText_characters);
-        editInputPhrase = findViewById(R.id.editText_input_phrase);
+        usersExceptCharacters = findViewById(R.id.editText_filter);
+        editInputPhrase = findViewById(R.id.editText_input);
         tvResult = findViewById(R.id.textView_result);
         TextWatcher textWatcher = new TextWatcher() {
             @Override

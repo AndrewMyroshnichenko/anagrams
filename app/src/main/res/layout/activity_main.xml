@@ -7,11 +7,11 @@
     tools:context=".MainActivity">
 
     <EditText
-        android:id="@+id/editText_characters"
+        android:id="@+id/editText_filter"
         android:layout_width="0dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="64dp"
-        android:hint="Input characters here"
+        android:layout_height="@dimen/main_textViews_height"
+        android:layout_marginTop="@dimen/main_margin_from_top"
+        android:hint="@string/activity_main_filter"
         android:inputType="textPersonName"
         app:layout_constraintWidth_percent="0.8"
         app:layout_constraintEnd_toEndOf="parent"
@@ -19,23 +19,23 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editText_input_phrase"
+        android:id="@+id/editText_input"
         android:layout_width="0dp"
-        android:layout_height="48dp"
-        android:hint="Write something here"
+        android:layout_height="@dimen/main_textViews_height"
+        android:hint="@string/activity_main_input"
         android:inputType="textMultiLine"
         app:layout_constraintWidth_percent="0.8"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText_characters" />
+        app:layout_constraintTop_toBottomOf="@+id/editText_filter" />
 
     <TextView
         android:id="@+id/textView_result"
         android:layout_width="0dp"
-        android:layout_height="48dp"
+        android:layout_height="@dimen/main_textViews_height"
         app:layout_constraintWidth_percent="0.8"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText_input_phrase" />
+        app:layout_constraintTop_toBottomOf="@+id/editText_input" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
