@@ -22,7 +22,7 @@ public class Anagram {
     private static char [] fillWithoutSelectedLetters(char [] inputArray, String exceptLetters){
         char [] withoutSelectedLettersArray = new char[inputArray.length];
 
-        if(exceptLetters != "") {
+        if(!exceptLetters.equals("")) {
             for (int i = 0; i < inputArray.length; i++) {
                 if(exceptLetters.indexOf(inputArray[i]) != -1){
                     withoutSelectedLettersArray[i] = '\u0000';
@@ -46,7 +46,7 @@ public class Anagram {
     private static char [] fillWithSelectedLetters(char [] inputArray, String exceptLetters){
         char [] outputArray = new char[inputArray.length];
 
-        if(exceptLetters != "") {
+        if(!exceptLetters.equals("")) {
             for (int i = 0; i < inputArray.length; i++){
                 if(exceptLetters.indexOf(inputArray[i]) != -1){
                     outputArray[i] = inputArray[i];
