@@ -7,15 +7,8 @@ public class Anagram {
     public static String reverse(String inputString, String exceptChars){
 
 
-            String [] tempArray = inputString.split(" ");
-            buildReversedArray(tempArray, exceptChars);
-
-            StringBuilder reversedString = new StringBuilder();
-            for (String s : tempArray) {
-                reversedString.append(s).append(" ");
-            }
-
-            return  reversedString.toString().trim();
+            final String [] tempArray = inputString.split("\\s");
+            return  buildReversedArray(tempArray, exceptChars);
 
     }
 
@@ -87,7 +80,9 @@ public class Anagram {
 
     }
 
-    private static void buildReversedArray(String [] stringToStringsArray, String exceptChars){
+    private static String buildReversedArray(String [] stringToStringsArray, String exceptChars){
+
+        StringBuilder reversedString = new StringBuilder();
 
         for(int i = 0; i < stringToStringsArray.length; i++){
             char [] inputWord = stringToStringsArray[i].toCharArray();
@@ -96,8 +91,10 @@ public class Anagram {
             Arrays.fill(outputWord, (char) '\u0000');
             outputWord = fillWithSelectedLetters(inputWord, exceptChars);
             finalFillingOutputArray(arrayWithoutUsersLetters, outputWord);
-            stringToStringsArray[i] = new String(outputWord);
+            reversedString.append(outputWord).append(" ");
         }
+
+        return reversedString.toString().trim();
     }
 
 
