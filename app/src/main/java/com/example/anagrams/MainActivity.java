@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.anagrams.utils.Anagram;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements TextWatcher {
 
 
     private EditText editInputPhrase;
@@ -24,28 +24,28 @@ public class MainActivity extends AppCompatActivity {
         usersExceptCharacters = findViewById(R.id.editText_filter);
         editInputPhrase = findViewById(R.id.editText_input);
         tvResult = findViewById(R.id.textView_result);
-        TextWatcher textWatcher = new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
-            }
+        editInputPhrase.addTextChangedListener(this);
+        usersExceptCharacters.addTextChangedListener(this);
+    }
 
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+    @Override
+    public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
-            }
+    }
 
-            @Override
-            public void afterTextChanged(Editable editable) {
+    @Override
+    public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
-                String inputPhrase = editInputPhrase.getText().toString().trim();
-                String exceptCharacters = usersExceptCharacters.getText().toString().trim();
-                tvResult.setText(Anagram.reverse(inputPhrase, exceptCharacters));
+    }
 
-            }
-        };
+    @Override
+    public void afterTextChanged(Editable editable) {
 
-        editInputPhrase.addTextChangedListener(textWatcher);
+        String inputPhrase = editInputPhrase.getText().toString().trim();
+        String exceptCharacters = usersExceptCharacters.getText().toString().trim();
+        tvResult.setText(Anagram.reverse(inputPhrase, exceptCharacters));
+
     }
 
 }
