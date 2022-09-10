@@ -5,11 +5,8 @@ import java.util.Arrays;
 public class Anagram {
 
     public static String reverse(String inputString, String exceptChars){
-
-
             final String [] tempArray = inputString.split("\\s");
             return  buildReversedArray(tempArray, exceptChars);
-
     }
 
     private static char [] fillWithoutSelectedLetters(char [] inputArray, String exceptLetters){
@@ -32,7 +29,6 @@ public class Anagram {
                 }
             }
         }
-
         return withoutSelectedLettersArray;
     }
 
@@ -56,8 +52,6 @@ public class Anagram {
                 }
             }
         }
-
-
         return outputArray;
     }
 
@@ -77,11 +71,9 @@ public class Anagram {
                 }
             }
         }
-
     }
 
     private static String buildReversedArray(String [] stringToStringsArray, String exceptChars){
-
         StringBuilder reversedString = new StringBuilder();
 
         for(int i = 0; i < stringToStringsArray.length; i++){
@@ -93,7 +85,6 @@ public class Anagram {
             finalFillingOutputArray(arrayWithoutUsersLetters, outputWord);
             reversedString.append(outputWord).append(" ");
         }
-
         return reversedString.toString().trim();
     }
 

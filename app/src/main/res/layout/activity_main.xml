@@ -9,19 +9,20 @@
     <EditText
         android:id="@+id/editText_filter"
         android:layout_width="0dp"
-        android:layout_height="@dimen/main_textViews_height"
-        android:layout_marginTop="@dimen/main_margin_from_top"
+        android:layout_height="wrap_content"
         android:hint="@string/activity_main_filter"
-        android:inputType="textPersonName"
-        app:layout_constraintWidth_percent="0.8"
+        android:inputType="textMultiLine"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.1"
+        app:layout_constraintWidth_percent="0.8" />
 
     <EditText
         android:id="@+id/editText_input"
         android:layout_width="0dp"
-        android:layout_height="@dimen/main_textViews_height"
+        android:layout_height="wrap_content"
         android:hint="@string/activity_main_input"
         android:inputType="textMultiLine"
         app:layout_constraintWidth_percent="0.8"
@@ -32,7 +33,7 @@
     <TextView
         android:id="@+id/textView_result"
         android:layout_width="0dp"
-        android:layout_height="@dimen/main_textViews_height"
+        android:layout_height="wrap_content"
         app:layout_constraintWidth_percent="0.8"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
