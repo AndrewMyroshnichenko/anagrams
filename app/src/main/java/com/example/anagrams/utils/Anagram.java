@@ -5,8 +5,8 @@ import java.util.Arrays;
 public class Anagram {
 
     public static String reverse(String inputString, String exceptChars){
-            final String [] tempArray = inputString.split("\\s");
-            return  buildReversedArray(tempArray, exceptChars);
+
+            return  buildReversedArray(inputString, exceptChars);
     }
 
     private static char [] fillWithoutSelectedLetters(char [] inputArray, String exceptLetters){
@@ -73,20 +73,29 @@ public class Anagram {
         }
     }
 
-    private static String buildReversedArray(String [] stringToStringsArray, String exceptChars){
+    private static String buildReversedArray(String input, String exceptChars){
+        final String [] tempArray = input.split("\\s");
         StringBuilder reversedString = new StringBuilder();
 
-        for(int i = 0; i < stringToStringsArray.length; i++){
-            char [] inputWord = stringToStringsArray[i].toCharArray();
-            char [] arrayWithoutUsersLetters = fillWithoutSelectedLetters(inputWord, exceptChars);
-            char [] outputWord = new char[inputWord.length];
-            Arrays.fill(outputWord, (char) '\u0000');
-            outputWord = fillWithSelectedLetters(inputWord, exceptChars);
-            finalFillingOutputArray(arrayWithoutUsersLetters, outputWord);
-            reversedString.append(outputWord).append(" ");
+        for(int i = 0; i < tempArray.length; i++){
+           reversedString.append(reverseWord(tempArray[i], exceptChars)).append(" ");
         }
+
         return reversedString.toString().trim();
     }
+
+    private static String reverseWord (String word, String filter){
+        char [] inputWord = word.toCharArray();
+        char [] arrayWithoutUsersLetters = fillWithoutSelectedLetters(inputWord, filter);
+        char [] outputWord = new char[inputWord.length];
+        Arrays.fill(outputWord, (char) '\u0000');
+        outputWord = fillWithSelectedLetters(inputWord, filter);
+        finalFillingOutputArray(arrayWithoutUsersLetters, outputWord);
+
+        return new String(outputWord);
+    }
+
+
 
 
 }
