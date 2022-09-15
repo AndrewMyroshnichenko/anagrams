@@ -14,35 +14,45 @@ public class Anagram {
 
     private static String reverseWord (String word, String filter){
         char [] wordToChars = word.toCharArray();
+        int i = 0;
+        int j = wordToChars.length - 1;
 
-        if(!filter.equals("")) { // if filter is not empty
-            for (int i = 0; i < wordToChars.length / 2; i++) {
-                if(filter.indexOf(wordToChars[i]) == -1) { //if symbol from the first part is not included in the filter list
-                    for(int j = 0; j < wordToChars.length / 2; j++){
-                        if(filter.indexOf(wordToChars[wordToChars.length - j - 1]) == -1) { //if symbol from the second part is not included in the filter list
-                            char temp = wordToChars[wordToChars.length - i - 1];
-                            wordToChars[wordToChars.length - i - 1] = wordToChars[i];
+        if(!filter.equals("")) {
+            while (i < wordToChars.length / 2 || j > wordToChars.length / 2) {
+                if(filter.indexOf(wordToChars[i]) == -1) {
+                        if(filter.indexOf(wordToChars[j]) == -1) {
+                            char temp = wordToChars[j];
+                            wordToChars[j] = wordToChars[i];
                             wordToChars[i] = temp;
-                            break;  // then swap symbols
+                            i++;
                         }
+                            j--;
+                } else {
+                    if(!Character.isLetter(wordToChars[j])){
+                            j--;
                     }
-
+                            i++;
                 }
             }
         } else {
-            for (int i = 0; i < wordToChars.length / 2; i++) {
+            while (i < wordToChars.length / 2 || j > wordToChars.length / 2) {
                 if(Character.isLetter(wordToChars[i])){
-                    for(int j = 0; j < wordToChars.length; j++){
-                        if(Character.isLetter(wordToChars[wordToChars.length - j - 1])) {
-                            char temp = wordToChars[wordToChars.length - i - 1];
-                            wordToChars[wordToChars.length - i - 1] = wordToChars[i];
+                        if(Character.isLetter(wordToChars[j])) {
+                            char temp = wordToChars[j];
+                            wordToChars[j] = wordToChars[i];
                             wordToChars[i] = temp;
-                            break;
+                            i++;
                         }
+                            j--;
+                } else {
+                    if(!Character.isLetter(wordToChars[j])){
+                            j--;
                     }
+                            i++;
                 }
             }
         }
+
 
         return new String(wordToChars);
     }
