@@ -17,23 +17,11 @@ public class Anagram {
         int i = 0;
         int j = wordToChars.length - 1;
 
-        while ((i < wordToChars.length / 2 || j > wordToChars.length / 2)  && i < wordToChars.length) {
-            if(!filter.equals("")) {
-                if(filter.indexOf(wordToChars[i]) != -1){
+        while (i < j) {
+
+                if((filter.indexOf(wordToChars[i]) != -1 && !filter.isEmpty() || (!Character.isLetter(wordToChars[i]) && filter.isEmpty()))){
                     i++;
-                } else if (filter.indexOf(wordToChars[j]) != -1) {
-                    j--;
-                } else {
-                    char temp = wordToChars[j];
-                    wordToChars[j] = wordToChars[i];
-                    wordToChars[i] = temp;
-                    i++;
-                    j--;
-                }
-            } else {
-                if(!Character.isLetter(wordToChars[i])){
-                    i++;
-                } else if (!Character.isLetter(wordToChars[j])) {
+                } else if ((filter.indexOf(wordToChars[j]) != -1 && !filter.isEmpty() || (!Character.isLetter(wordToChars[j]) && filter.isEmpty()))) {
                     j--;
                 } else {
                     char temp = wordToChars[j];
@@ -43,9 +31,6 @@ public class Anagram {
                     j--;
                 }
             }
-        }
-
-
 
         return new String(wordToChars);
     }
