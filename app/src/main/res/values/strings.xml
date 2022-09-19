@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Anagrams</string>
+
+    <string name="activity_main_filter">Input filter symbols here</string>
+    <string name="activity_main_input">Input your phrase here</string>
+</resources>
