@@ -36,10 +36,7 @@ public class Anagram {
     }
 
     private static boolean isExceptLetter(char symbol, String filter){
-        if((filter.indexOf(symbol) != -1 || (!Character.isLetter(symbol) && filter.isEmpty()))){
-            return true;
-        }
-        return  false;
+        return filter.isEmpty() ? !Character.isLetter(symbol) : filter.indexOf(symbol) != -1;
     }
 
 }
