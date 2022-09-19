@@ -19,9 +19,9 @@ public class Anagram {
 
         while (i < j) {
 
-                if((filter.indexOf(wordToChars[i]) != -1 && !filter.isEmpty() || (!Character.isLetter(wordToChars[i]) && filter.isEmpty()))){
+                if(isExceptLetter(wordToChars[i], filter)){
                     i++;
-                } else if ((filter.indexOf(wordToChars[j]) != -1 && !filter.isEmpty() || (!Character.isLetter(wordToChars[j]) && filter.isEmpty()))) {
+                } else if (isExceptLetter(wordToChars[j], filter)) {
                     j--;
                 } else {
                     char temp = wordToChars[j];
@@ -34,6 +34,14 @@ public class Anagram {
 
         return new String(wordToChars);
     }
+
+    private static boolean isExceptLetter(char symbol, String filter){
+        if((filter.indexOf(symbol) != -1 && !filter.isEmpty() || (!Character.isLetter(symbol) && filter.isEmpty()))){
+            return true;
+        }
+        return  false;
+    }
+
 }
 
 
