@@ -1,5 +1,7 @@
 package com.example.anagrams.util;
 
+import androidx.annotation.NonNull;
+
 import com.example.anagrams.utils.Anagram;
 
 import org.junit.Assert;
@@ -52,6 +54,16 @@ public class AnagramTest {
         Assert.assertEquals("Holl1e !dlroW", Anagram.reverse("He1llo World!", "H"));
     }
 
+    @Test(expected = NullPointerException.class)
+    public void filterNullPointerExceptionTest(){
+        Anagram.reverse("Hello world", null);
+    }
+
+    @Test(expected = NullPointerException.class)
+    public void inputNullPointerExceptionTest(){
+        Anagram.reverse(null, "XxLl");
+    }
+    //my tests
 
 
 }
